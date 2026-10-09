@@ -1,16 +1,40 @@
-# React + Vite
+# Document Pipeline UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React frontend for the [Document Processing Pipeline](https://github.com/Mahesh-Soma/document-processing-pipeline) backend.
 
-Currently, two official plugins are available:
+**Live app:** https://document-pipeline-ui.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Backend API (Swagger):** https://document-processing-pipeline-xord.onrender.com/swagger-ui/index.html
 
-## React Compiler
+> Demo only. Please don't upload personal or sensitive documents.
+> The backend runs on Render's free tier, so the first request after a period of inactivity can take 30-50 seconds.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Upload a PDF (checked in the browser: PDF only, under 5 MB)
+- Status updates automatically every 4 seconds: QUEUED, PROCESSING, COMPLETED or FAILED
+- Shows each document's category and summary
+- Each browser only sees the documents it uploaded (ids stored in localStorage)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech stack
+
+React, Vite, JavaScript (ES6), fetch API, deployed on Vercel.
+
+## Structure
+
+- `src/api.js` - all backend calls in one place
+- `src/components/UploadForm.jsx` - file picker and upload
+- `src/components/DocumentList.jsx` - loads and polls the user's documents
+- `src/components/DocumentCard.jsx` and `StatusBadge.jsx` - display
+
+## Run locally
+
+```
+npm install
+```
+
+Create a `.env` file containing `VITE_API_URL=https://document-processing-pipeline-xord.onrender.com`, then:
+
+```
+npm run dev
+```
