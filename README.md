@@ -3,7 +3,6 @@
 React frontend for the [Document Processing Pipeline](https://github.com/Mahesh-Soma/document-processing-pipeline) backend.
 
 **Live app:** https://document-pipeline-ui.vercel.app
-
 **Backend API (Swagger):** https://document-processing-pipeline-xord.onrender.com/swagger-ui/index.html
 
 > Demo only. Please don't upload personal or sensitive documents.
