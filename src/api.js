@@ -1,5 +1,6 @@
 const BASE_URL = import.meta.env.VITE_API_URL;
 
+
 export async function uploadDocument(file) {
   const formData = new FormData();
   formData.append("file", file);
@@ -10,11 +11,15 @@ export async function uploadDocument(file) {
   });
 
   if (!response.ok) {
-    throw new Error("Upload failed");
+    const errorData = await response.json();
+    throw new Error(
+      errorData.message || "Upload failed"
+    );
   }
 
   return response.json();
 }
+
 
 export async function getDocument(id) {
   const response = await fetch(`${BASE_URL}/documents/${id}`);

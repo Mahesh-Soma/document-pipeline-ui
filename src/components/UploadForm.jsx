@@ -38,11 +38,16 @@ function UploadForm({ onUploadSuccess }) {
      onUploadSuccess(result);
       setFile(null);
       form.reset();
-    } catch (err) {
-      setError("Upload failed. If the server was asleep, wait a few seconds and try again.");
+    } 
+    catch (err) {
+      setError(
+        err.message ||
+        "Upload failed. If the server was asleep, wait a few seconds and try again."
+      );
     } finally {
       setLoading(false);
     }
+
   };
 
   return (
